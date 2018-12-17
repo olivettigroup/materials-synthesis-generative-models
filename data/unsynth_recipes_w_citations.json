@@ -1,0 +1,412 @@
+{
+    "DyCuO3": {
+        "attempt_num": 3,
+        "precursors": [
+            "DyCl3",
+            "Cu2S"
+        ],
+        "actions": [
+            "prepare",
+            "mix",
+            "heat",
+            "perform",
+            "remove"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.matchemphys.2003.09.001",
+            "10.1039/b822785c",
+            "10.1016/j.elecom.2006.10.029"
+        ]
+    },
+    "GdCuO3": {
+        "attempt_num": 7,
+        "precursors": [
+            "Gd2O3",
+            "CuO"
+        ],
+        "actions": [
+            "prepare",
+            "coat",
+            "prepare",
+            "sinter",
+            "prepare",
+            "mix",
+            "prepare",
+            "sinter",
+            "prepare"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1038/srep19448",
+            "10.1021/acs.nanolett.6b03133"
+        ]
+    },
+    "CdPuO3": {
+        "attempt_num": 9,
+        "precursors": [
+            "PuO2",
+            "Cd(ClO4)2"
+        ],
+        "actions": [
+            "prepare",
+            "mix",
+            "add",
+            "stir",
+            "wash",
+            "remove"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.electacta.2011.04.047",
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.electacta.2013.05.025"
+        ]
+    },
+    "BiVO3": {
+        "attempt_num": 3,
+        "precursors": [
+            "NaVO3",
+            "Bi(NO3)2"
+        ],
+        "actions": [
+            "prepare",
+            "dissolve",
+            "stir",
+            "dry",
+            "prepare",
+            "stir",
+            "wash",
+            "dry",
+            "wash",
+            "perform"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jnucmat.2005.04.017",
+            "10.1016/j.jpowsour.2004.05.048",
+            "10.1016/j.nanoen.2016.02.004"
+        ]
+    },
+    "CsUO3": {
+        "attempt_num": 7,
+        "precursors": [
+            "CsNO3",
+            "UO2"
+        ],
+        "actions": [
+            "grind",
+            "prepare",
+            "perform",
+            "sinter"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.tsf.2015.01.037",
+            "10.1016/j.nanoen.2016.02.004"
+        ]
+    },
+    "KReO3": {
+        "attempt_num": 7,
+        "precursors": [
+            "KI",
+            "ReO2"
+        ],
+        "actions": [
+            "prepare",
+            "dissolve",
+            "stir",
+            "wash",
+            "dry",
+            "calcine",
+            "prepare",
+            "dissolve",
+            "add",
+            "stir",
+            "dry",
+            "calcine",
+            "dry",
+            "calcine"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.electacta.2011.04.047",
+            "10.1016/j.jssc.2008.02.031",
+            "10.1007/s00339-016-0300-8"
+        ]
+    },
+    "TmGaO3": {
+        "attempt_num": 7,
+        "precursors": [
+            "TmCl3",
+            "Ga(HO)3"
+        ],
+        "actions": [
+            "prepare",
+            "dry",
+            "calcine",
+            "sinter",
+            "prepare",
+            "sinter",
+            "add"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.jpcs.2009.05.002",
+            "10.1016/j.ssi.2014.03.003"
+        ]
+    },
+    "TmCoO3": {
+        "attempt_num": 2,
+        "precursors": [
+            "TmCl3",
+            "Co(NO3)3"
+        ],
+        "actions": [
+            "prepare",
+            "mix",
+            "stir",
+            "calcine",
+            "sinter",
+            "mix",
+            "dry",
+            "sinter",
+            "prepare"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.powtec.2009.12.017",
+            "10.1016/j.electacta.2011.04.047"
+        ]
+    },
+    "CaPuO3": {
+        "attempt_num": 3,
+        "precursors": [
+            "Ca(HO)2",
+            "PuCl3"
+        ],
+        "actions": [
+            "prepare",
+            "heat",
+            "cool",
+            "perform"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.electacta.2011.04.047",
+            "10.1016/j.jssc.2008.02.031",
+            "10.1021/acs.jpcc.6b02559"
+        ]
+    },
+    "HgPuO3": {
+        "attempt_num": 2,
+        "precursors": [
+            "PuO2",
+            "Hg(NO3)2"
+        ],
+        "actions": [
+            "prepare",
+            "heat",
+            "cool",
+            "heat",
+            "perform"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.ssi.2014.03.003",
+            "10.1016/j.cej.2010.03.054"
+        ]
+    },
+    "HgZrO3": {
+        "attempt_num": 2,
+        "precursors": [
+            "ZrN2O7",
+            "HgO"
+        ],
+        "actions": [
+            "prepare",
+            "dissolve",
+            "add",
+            "stir",
+            "dry",
+            "calcine",
+            "heat"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1038/srep19448",
+            "10.1016/j.jcis.2015.06.014"
+        ]
+    },
+    "TbCuO3": {
+        "attempt_num": 1,
+        "precursors": [
+            "TbCl3",
+            "CuCl"
+        ],
+        "actions": [
+            "prepare",
+            "heat",
+            "cool",
+            "heat",
+            "perform"
+        ],
+        "nearest_lit_dois": [
+            "10.1007/s10854-017-6892-8",
+            "10.1126/sciadv.aao5173",
+            "10.1038/ncomms13941"
+        ]
+    },
+    "SrCrO3": {
+        "attempt_num": 5,
+        "precursors": [
+            "SrBr2",
+            "CrN"
+        ],
+        "actions": [
+            "mix",
+            "heat",
+            "prepare"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.tsf.2015.01.037",
+            "10.1016/j.electacta.2011.04.047"
+        ]
+    },
+    "EuCuO3": {
+        "attempt_num": 9,
+        "precursors": [
+            "EuCl3",
+            "Cu2O"
+        ],
+        "actions": [
+            "prepare",
+            "dissolve",
+            "mix",
+            "stir",
+            "heat",
+            "calcine",
+            "prepare",
+            "dissolve",
+            "add",
+            "stir",
+            "dry",
+            "stir",
+            "wash",
+            "dry",
+            "prepare"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.electacta.2011.04.047",
+            "10.1038/srep21188"
+        ]
+    },
+    "EuHfO3": {
+        "attempt_num": 6,
+        "precursors": [
+            "Eu(NO3)3",
+            "HfCl4"
+        ],
+        "actions": [
+            "prepare",
+            "sinter",
+            "prepare",
+            "sinter",
+            "prepare",
+            "sinter",
+            "heat",
+            "calcine",
+            "prepare",
+            "heat"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1021/acsnano.5b02450",
+            "10.1016/j.nanoen.2014.08.015"
+        ]
+    },
+    "EuIrO3": {
+        "attempt_num": 2,
+        "precursors": [
+            "EuS",
+            "IrCl3"
+        ],
+        "actions": [
+            "prepare",
+            "dissolve",
+            "stir",
+            "wash",
+            "dry",
+            "calcine",
+            "prepare",
+            "perform",
+            "dry"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.electacta.2011.04.047",
+            "10.1007/s10854-015-3918-y",
+            "10.1016/j.jssc.2008.02.031"
+        ]
+    },
+    "ErCoO3": {
+        "attempt_num": 11,
+        "precursors": [
+            "Er(NO3)3",
+            "CoS"
+        ],
+        "actions": [
+            "prepare",
+            "clean",
+            "remove",
+            "grow",
+            "heat",
+            "coat"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.electacta.2011.04.047",
+            "10.1016/j.jpowsour.2014.03.065"
+        ]
+    },
+    "NaReO3": {
+        "attempt_num": 7,
+        "precursors": [
+            "Na2SO4",
+            "ReCl4"
+        ],
+        "actions": [
+            "heat",
+            "transfer",
+            "heat",
+            "transfer",
+            "heat",
+            "transfer",
+            "heat",
+            "transfer",
+            "heat"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2008.02.031",
+            "10.1016/j.nanoen.2016.02.004",
+            "10.1016/j.jcrysgro.2009.02.018"
+        ]
+    },
+    "PrInO3": {
+        "attempt_num": 8,
+        "precursors": [
+            "Pr(NO3)3",
+            "InCl3"
+        ],
+        "actions": [
+            "prepare",
+            "dissolve",
+            "stir",
+            "dry",
+            "prepare",
+            "coat",
+            "prepare"
+        ],
+        "nearest_lit_dois": [
+            "10.1016/j.jssc.2006.06.019",
+            "10.1016/j.ssi.2004.02.047",
+            "10.1016/j.matlet.2006.03.111"
+        ]
+    }
+}
