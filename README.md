@@ -4,9 +4,15 @@ Public release of data and code for materials synthesis generation, along with N
 
 This code and data is a companion to the paper, "**Inorganic Materials Synthesis Planning with Literature-Trained Neural Networks**."
 
+## Demo 🐍
+
+`demo.ipynb` (or `demo.html`) contains a Python demo showcasing the fine-tuned word embeddings introduced in this paper. The demo also provides an example of building and inspecting the autoencoder models.
+
 ## Annotated NER Data 📝
 
 `data/ner_annotations.json` contains tokenized and labelled NER information for 235 synthesis recipes. Each annotated recipe is marked by a `"split"` key which may be `"train"`, `"test"`, or `"dev"` - and there are also five papers (which were used for interannotator agreement internally) marked with a `"metrics"` split. These splits are merely suggested (and were indeed computed randomly), and so we encourage others to use whatever splits of the data they deem appropriate. This file should be usable as-is for training NER models. Each annotated document contains equal-length arrays of `tokens` and their respective `labels`.
+
+`data/brat/` contains raw annotation files in the BRAT annotation format. You can load these into your own instance of BRAT and modify the annotations however you like! These files contain event/relation annotations as well (e.g., "heat" acts on "titania").
 
 ## NLP Resource Downloads 💽
 
