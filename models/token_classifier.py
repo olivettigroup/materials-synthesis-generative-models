@@ -13,13 +13,16 @@ from keras.models import Model, load_model
 
 
 class TokenClassifier(object):
-  def __init__(self, seq_maxlen=100):
+  def __init__(self, seq_maxlen=100, vocab="vocab.txt", 
+                      options="elmo_options.json", 
+                      weights="elmo_weights.hdf5"):
     self.token_classes = {
       0: "null",
       1: "precursor",
       2: "target",
       3: "operation",
     }
+    self.session = None
     self.X_train = None
     self.X_dev = None
     self.Y_train = None
@@ -28,8 +31,8 @@ class TokenClassifier(object):
     self.inv_token_classes = {v: k for k, v in self.token_classes.items()}
     self._seq_maxlen = seq_maxlen
 
-    self.load_tf_session()
-    self._load_embeddings()
+    self._load_tf_session()
+    self._load_embeddings(vocab, options, weights)
 
   def build_nn_model(self, recurrent_dim=2048, dense1_dim=1024, elmo_dim=1024):
     input_vectors = Input(shape=(self._seq_maxlen, elmo_dim))
@@ -150,9 +153,9 @@ class TokenClassifier(object):
     self.session = tf.InteractiveSession(config=config)
 
   def _load_embeddings(self, 
-                      vocab="bin/vocab.txt", 
-                      options="data/elmo_options.json", 
-                      weights="bin/elmo_weights.hdf5"):
+                      vocab="vocab.txt", 
+                      options="elmo_options.json", 
+                      weights="elmo_weights.hdf5"):
     self.elmo_model = BidirectionalLanguageModel(options, weights)
     self.batcher = Batcher(vocab, 50)
 

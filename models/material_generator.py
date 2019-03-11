@@ -74,10 +74,7 @@ class MaterialGenerator(object):
 
         decoder_x_input = Input(shape=(latent_dim,))
 
-        if use_conditionals:
-            decoder_inputs = Concatenate(name="concat_cond_dec")([decoder_x_input, c_latent_recipe, c_element])
-        else:
-            decoder_inputs = decoder_x_input
+        decoder_inputs = Concatenate(name="concat_cond_dec")([decoder_x_input, c_latent_recipe, c_element])
         _h_decoded = decoder_h(decoder_inputs)
         _h_decode_repeat = decoder_h_repeat(_h_decoded)
         _gru_h_decode_1 = decoder_h_gru_1(_h_decode_repeat)
