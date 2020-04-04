@@ -44,5 +44,5 @@ Links to the trained models/weights are as follows:
 If you use this work (e.g., the NER model, the generative models, the pre-trained embeddings), please cite the following work(s) as appropriate:
 
 ```
-[Citation(s) to be included soon]
+Kim, E., Jensen, Z., Grootel, A.V., Huang, K., Staib, M., Mysore, S., Chang, H.S., Strubell, E., McCallum, A., Jegelka, S. and Olivetti, E., 2020. Inorganic Materials Synthesis Planning with Literature-Trained Neural Networks. Journal of Chemical Information and Modeling.
 ```
