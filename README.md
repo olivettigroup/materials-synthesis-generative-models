@@ -16,7 +16,7 @@ This code and data is a companion to the paper, "**Inorganic Materials Synthesis
 
 ## NLP Resource Downloads 💽
 
-Along with this work, we also open-source two pre-trained word embedding models: FastText and ELMo, each trained on our internal database of over 2.5 million materials science articles.
+Along with this work, we also open-source two pre-trained word embedding models: FastText and ELMo, each trained on our internal database of over 2.5 million materials science articles and our pre-trained model to classify the paragraphs of material science articles.
 
 The FastText model follows the `gensim` Python library, and can be loaded as a `keyedvectors` object. Please see the `gensim` documentation for more details. Note that our version FastText is trained on **lowercase** text only.
 
@@ -26,6 +26,7 @@ Links to the trained models/weights are as follows:
 
 - FastText: https://figshare.com/s/70455cfcd0084a504745
 - ELMo: https://figshare.com/s/ec677e7db3cf2b7db4bf
+- ParagraphClassifier: https://figshare.com/s/1a07d18ad20008ddd562
 
 ## Neural Network Models/Data 🧠
 
