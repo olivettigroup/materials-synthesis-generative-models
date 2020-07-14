@@ -10,6 +10,7 @@ from keras.optimizers import Adam
 from keras.preprocessing import sequence
 from unidecode import unidecode_expect_nonascii
 import re
+import spacy
 
 
 class ParagraphClassifier(object):
@@ -25,6 +26,10 @@ class ParagraphClassifier(object):
       6: 'conclusions',
       7: 'caption'
     }
+    try:
+        self.nlp = spacy.load('en')
+    except:
+        self.nlp = spacy.load('en_core_web_sm')
 
   def build_nn_model(self, nn_model=None, rnn_size=128):
     self._load_embeddings()
