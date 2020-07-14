@@ -9,6 +9,7 @@ from keras.models import Model, load_model
 from keras.optimizers import Adam
 from keras.preprocessing import sequence
 from unidecode import unidecode_expect_nonascii
+import re
 
 
 class ParagraphClassifier(object):
