@@ -102,7 +102,7 @@ class ParagraphClassifier(object):
   def save(self, filename):
     self.model.save(filename)
 
-  def load(self, filename):
+  def load(self, filename='bin/paragraph_classifier.model'):
     self.model = load_model(filename)
     self.fast_predict = K.function(
          self.model.inputs + [K.learning_phase()],
