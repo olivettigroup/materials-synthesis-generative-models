@@ -8,6 +8,7 @@ from keras.layers.merge import Concatenate
 from keras.models import Model, load_model
 from keras.optimizers import Adam
 from keras.preprocessing import sequence
+from unidecode import unidecode_expect_nonascii
 
 
 class ParagraphClassifier(object):
@@ -102,3 +103,13 @@ class ParagraphClassifier(object):
          [self.model.layers[-1].output]
          )
     self._load_embeddings()
+    
+  def _normalize_string(self, string):
+    ret_string = ''
+    for char in string:
+      if re.match('[Α-Ωα-ωÅ]', char) is not None:
+        ret_string += char
+      else:
+        ret_string += unidecode_expect_nonascii(char)
+        
+    return ' '.join(ret_string.split())
