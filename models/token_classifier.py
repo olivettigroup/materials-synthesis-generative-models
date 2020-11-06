@@ -15,7 +15,7 @@ from keras.models import Model, load_model
 class TokenClassifier(object):
   def __init__(self, seq_maxlen=100, vocab="vocab.txt", 
                       options="elmo_options.json", 
-                      weights="elmo_weights.hdf5"):
+                      weights="elmo_weights.hdf5", use_cpu=False):
     self.token_classes = {
       0: "null",
       1: "precursor",
@@ -31,7 +31,7 @@ class TokenClassifier(object):
     self.inv_token_classes = {v: k for k, v in self.token_classes.items()}
     self._seq_maxlen = seq_maxlen
 
-    self._load_tf_session()
+    self._load_tf_session(use_cpu=use_cpu)
     self._load_embeddings(vocab, options, weights)
 
   def build_nn_model(self, recurrent_dim=2048, dense1_dim=1024, elmo_dim=1024):
