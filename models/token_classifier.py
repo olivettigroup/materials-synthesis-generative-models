@@ -160,7 +160,10 @@ class TokenClassifier(object):
         config = tf.compat.v1.ConfigProto()
         config.gpu_options.allow_growth = True
     
-    self.session = tf.InteractiveSession(config=config)
+    try:
+      self.session = tf.InteractiveSession(config=config)
+    except:
+      self.session = tf.compat.v1.InteractiveSession(config=config)
 
   def _load_embeddings(self, 
                       vocab="vocab.txt", 
