@@ -142,13 +142,23 @@ class TokenClassifier(object):
       self.session.close()
 
     if use_cpu:
-      config = tf.ConfigProto(
-        device_count={'CPU' : 1, 'GPU' : 0},
-        allow_soft_placement=True,
-      )
+      try:
+        config = tf.ConfigProto(
+          device_count={'CPU' : 1, 'GPU' : 0},
+          allow_soft_placement=True,
+        )
+      except:
+        config = tf.compat.v1.ConfigProto(
+          device_count={'CPU' : 1, 'GPU' : 0},
+          allow_soft_placement=True,
+        )
     else:
-      config = tf.ConfigProto()
-      config.gpu_options.allow_growth = True
+      try:
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True
+      except:
+        config = tf.compat.v1.ConfigProto()
+        config.gpu_options.allow_growth = True
     
     self.session = tf.InteractiveSession(config=config)
 
