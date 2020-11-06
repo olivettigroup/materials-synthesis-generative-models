@@ -182,4 +182,4 @@ class TokenClassifier(object):
       'output', context_embeddings_op, l2_coef=0.0
     )
 
-    tf.global_variables_initializer().run()
+    tf.compat.v1.global_variables_initializer().run()
