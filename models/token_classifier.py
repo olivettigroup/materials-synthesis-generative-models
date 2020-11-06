@@ -2,7 +2,11 @@ import json
 
 import numpy as np
 
-import tensorflow as tf
+try:
+  import tensorflow.compat.v1 as tf
+  tf.disable_v2_behavior()
+except:
+  import tensorflow as tf
 from bilm import Batcher, BidirectionalLanguageModel, weight_layers
 from keras import backend as K
 from keras import optimizers
