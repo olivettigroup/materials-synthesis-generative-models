@@ -2,11 +2,7 @@ import json
 
 import numpy as np
 
-try:
-  import tensorflow.compat.v1 as tf
-  tf.disable_v2_behavior()
-except:
-  import tensorflow as tf
+import tensorflow as tf
 from bilm import Batcher, BidirectionalLanguageModel, weight_layers
 from keras import backend as K
 from keras import optimizers
@@ -182,4 +178,4 @@ class TokenClassifier(object):
       'output', context_embeddings_op, l2_coef=0.0
     )
 
-    tf.compat.v1.global_variables_initializer().run()
+    tf.global_variables_initializer().run()
