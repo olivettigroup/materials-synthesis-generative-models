@@ -34,8 +34,8 @@ class TokenClassifier(object):
     self._load_tf_session(use_cpu=use_cpu)
     self._load_embeddings(vocab, options, weights)
     self.fast_predict = K.function(
-      self.model.inputs + [K.learning_phase()],
-      [self.model.layers[-1].output]
+      self.elmo_model.inputs + [K.learning_phase()],
+      [self.elmo_model.layers[-1].output]
     )
 
   def build_nn_model(self, recurrent_dim=2048, dense1_dim=1024, elmo_dim=1024):
