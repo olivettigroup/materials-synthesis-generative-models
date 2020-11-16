@@ -151,7 +151,7 @@ class TokenClassifier(object):
             batch_size=batch_size,
             epochs=num_epochs,
             validation_split=val_split,
-            validation_data=(self.X_dev, self.Y_dev),
+            validation_data=(self.X_dev, self.y_dev),
             callbacks= callbacks,
             verbose=verbosity
         )
