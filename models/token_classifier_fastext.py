@@ -139,9 +139,9 @@ class TokenClassifier(object):
                 schedule
             ]
         if stop_early:
-        callbacks.append(
-            EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
-        )
+            callbacks.append(
+                EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
+            )
 
         self.model.fit(
             x=self.X_train,
