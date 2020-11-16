@@ -112,15 +112,7 @@ class TokenClassifier(object):
   def train(self, batch_size=256, num_epochs=30, checkpt_filepath=None, 
             checkpt_period=5, verbosity=1, val_split=0.0, stop_early=False):
     self._load_tf_session(use_cpu=self.use_cpu)
-    callbacks = [
-      ModelCheckpoint(
-        checkpt_filepath,
-        monitor='val_loss',
-        verbose=0,
-        save_best_only=True,
-        period=checkpt_period
-        )
-    ]
+    callbacks = []
     if stop_early:
       callbacks.append(
         EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
