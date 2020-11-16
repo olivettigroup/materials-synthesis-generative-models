@@ -47,7 +47,8 @@ class TokenClassifier(object):
             22: "reference",
             23: "operation",
             24: "meta",
-            25: "material-descriptor"
+            25: "material-descriptor",
+            26: "characterization-apparatus"
         }
         self.inv_token_classes = {v: k for k, v in self.token_classes.items()}
     
