@@ -216,9 +216,9 @@ class TokenClassifier(object):
     def _normalize_string(self, string):
         ret_string = u''
         for char in string:
-        if re.match(u'[Α-Ωα-ωÅ]', char) is not None:
-            ret_string += str(char)
-        else:
-            ret_string += str(unidecode_expect_nonascii(char))
+            if re.match(u'[Α-Ωα-ωÅ]', char) is not None:
+                ret_string += str(char)
+            else:
+                ret_string += str(unidecode_expect_nonascii(char))
             
         return ret_string
