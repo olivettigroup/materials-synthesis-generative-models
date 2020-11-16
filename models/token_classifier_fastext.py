@@ -147,7 +147,7 @@ class TokenClassifier(object):
 
         self.model.fit(
             x=self.X_train,
-            y=self.Y_train,
+            y=self.y_train,
             batch_size=batch_size,
             epochs=num_epochs,
             validation_split=val_split,
@@ -161,7 +161,7 @@ class TokenClassifier(object):
         train_labels, train_predictions, train_words = [],[],[]
         test_labels, test_predictions, test_words = [],[],[]
         num_totally_correct = 0
-        for i, (sent, labels, preds) in enumerate(zip(self.test_sentences, self.Y_test, raw_preds_test)):
+        for i, (sent, labels, preds) in enumerate(zip(self.test_sentences, self.y_test, raw_preds_test)):
             all_correct = True
             for word, label, pred in zip(sent, labels, preds):
                 test_words.append(word)
@@ -182,7 +182,7 @@ class TokenClassifier(object):
         return self.model.predict(self.X_test)
 
     def evaluate(self, batch_size=32):
-        return self.model.evaluate(self.X_test, self.Y_test, batch_size=batch_size)
+        return self.model.evaluate(self.X_test, self.y_test, batch_size=batch_size)
     
     def predict_many(self, tokenized_sentences):
         predictions = []
