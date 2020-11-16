@@ -15,7 +15,7 @@ from keras.models import Model, load_model
 class TokenClassifier(object):
   def __init__(self, seq_maxlen=100, vocab="vocab.txt", 
                       options="elmo_options.json", 
-                      weights="elmo_weights.hdf5", use_cpu=False):
+                      weights="elmo_weights.hdf5", use_cpu=False, fpath='data/ner_annotations_split.json'):
     self.token_classes = {
       0: "null",
       1: "precursor",
@@ -23,16 +23,72 @@ class TokenClassifier(object):
       3: "operation",
     }
     self.session = None
-    self.X_train = None
-    self.X_dev = None
-    self.Y_train = None
-    self.Y_dev = None
-
     self.inv_token_classes = {v: k for k, v in self.token_classes.items()}
     self._seq_maxlen = seq_maxlen
     self.use_cpu = use_cpu
     self._load_tf_session(use_cpu=use_cpu)
     self._load_embeddings(vocab, options, weights)
+    
+    train_sentences, dev_sentences, test_sentences = [],[],[]
+    train_labels, dev_labels, test_labels = [],[],[]
+    for paper in data['data']:
+      if paper['split'] == 'train':
+        train_sentences.extend(paper['tokens'][1:]) # first "sentence" is the title which we don't want right now
+        train_labels.extend(paper['labels'][1:])
+      elif paper['split'] == 'dev':
+        dev_sentences.extend(paper['tokens'][1:])
+        dev_labels.extend(paper['labels'][1:])
+      else:
+        test_sentences.extend(paper['tokens'][1:])
+        test_labels.extend(paper['labels'][1:])
+    print('Initializing ELMO Token Model.....')
+    train_elmo_features = token_classifier.featurize_elmo_list(train_sentences)
+    print('Train Input shape:', train_elmo_features.shape)
+    dev_elmo_features = token_classifier.featurize_elmo_list(dev_sentences)
+    print('Dev Input shape:', dev_elmo_features.shape)
+    test_elmo_features = token_classifier.featurize_elmo_list(test_sentences)
+    print('Test Input shape:', test_elmo_features.shape)
+    y_train, y_dev, y_test = [],[],[]
+    for labels in train_labels:
+      train_onehot_labels = np.zeros(shape=(token_classifier._seq_maxlen, len(token_classifier.token_classes)))
+      for j, label in enumerate(labels[:token_classifier._seq_maxlen]):
+        if label not in ['precursor', 'target', 'operation']:
+          label = 'null'
+        train_onehot_label = [0.0]*len(token_classifier.token_classes)
+        train_onehot_label[token_classifier.inv_token_classes[label]] = 1.0
+        train_onehot_labels[j] = train_onehot_label
+      y_train.append(train_onehot_labels)
+    for labels in dev_labels:
+      dev_onehot_labels = np.zeros(shape=(token_classifier._seq_maxlen, len(token_classifier.token_classes)))
+      for j, label in enumerate(labels[:token_classifier._seq_maxlen]):
+        if label not in ['precursor', 'target', 'operation']:
+            label = 'null'
+        dev_onehot_label = [0.0]*len(token_classifier.token_classes)
+        dev_onehot_label[token_classifier.inv_token_classes[label]] = 1.0
+        dev_onehot_labels[j] = dev_onehot_label
+      y_dev.append(dev_onehot_labels)
+    for labels in test_labels:
+      test_onehot_labels = np.zeros(shape=(token_classifier._seq_maxlen, len(token_classifier.token_classes))) 
+      for j, label in enumerate(labels[:token_classifier._seq_maxlen]):
+        if label not in ['precursor', 'target', 'operation']:
+            label = 'null'
+        test_onehot_label = [0.0]*len(token_classifier.token_classes)
+        test_onehot_label[token_classifier.inv_token_classes[label]] = 1.0
+        test_onehot_labels[j] = test_onehot_label
+      y_test.append(test_onehot_labels)
+    y_test = np.array(y_test)
+    y_dev = np.array(y_dev)
+    y_train = np.array(y_train)
+    print('Train Output Shape:', y_train.shape)
+    print('Dev Output Shape:', y_dev.shape)
+    print('Test Output Shape:', y_test.shape)
+
+    self.X_train = train_elmo_features
+    self.X_dev = dev_elmo_features
+    self.X_test = test_elmo_features
+    self.Y_train = y_train
+    self.Y_dev = y_dev
+    self.Y_test = y_test
 
   def build_nn_model(self, recurrent_dim=2048, dense1_dim=1024, elmo_dim=1024):
     input_vectors = Input(shape=(self._seq_maxlen, elmo_dim))
