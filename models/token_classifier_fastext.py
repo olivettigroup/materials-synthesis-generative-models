@@ -84,12 +84,12 @@ class TokenClassifier(object):
         print('Dev Set Shape: Input-', self.X_dev.shape, ' Output-', self.y_dev.shape)
         print('Test Set Shape: Input-', self.X_test.shape, ' Output-', self.y_test.shape)
 
-    def build_nn_model(self, recurrent_dim=256, focal=False):
+    def build_nn_model(self, recurrent_dim=256):
         try:
             x = self.emb_vocab_w2v
         except:
             self._load_embeddings()
-
+        input_ft_ids = Input(shape=(self._seq_maxlen,))
         emb_ft = Embedding(
             input_dim=self.emb_weights_ft.shape[0],
             output_dim=self.emb_weights_ft.shape[1],
