@@ -28,7 +28,7 @@ class TokenClassifier(object):
     self.use_cpu = use_cpu
     self._load_tf_session(use_cpu=use_cpu)
     self._load_embeddings(vocab, options, weights)
-    
+    data = json.loads(open(fpath, "r").read())
     train_sentences, dev_sentences, test_sentences = [],[],[]
     train_labels, dev_labels, test_labels = [],[],[]
     for paper in data['data']:
