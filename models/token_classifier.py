@@ -13,7 +13,7 @@ from keras.models import Model, load_model
 
 
 class TokenClassifier(object):
-  def __init__(self, seq_maxlen=100, vocab="bin/vocab.txt", 
+  def __init__(self, seq_maxlen=100, vocab="bin/vocab-2016-09-10.txt", 
                       options="bin/elmo_options.json", 
                       weights="bin/elmo_weights.hdf5", use_cpu=False, fpath='data/ner_annotations_split.json'):
     self.token_classes = {
