@@ -128,16 +128,16 @@ class TokenClassifier(object):
         callbacks = []
         callbacks.append(schedule)
         if checkpt_filepath is not None:
-        callbacks = [
-            ModelCheckpoint(
-            checkpt_filepath,
-            monitor='val_loss',
-            verbose=0,
-            save_best_only=True,
-            period=checkpt_period
-            ),
-            schedule
-        ]
+            callbacks = [
+                ModelCheckpoint(
+                checkpt_filepath,
+                monitor='val_loss',
+                verbose=0,
+                save_best_only=True,
+                period=checkpt_period
+                ),
+                schedule
+            ]
         if stop_early:
         callbacks.append(
             EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
