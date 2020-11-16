@@ -161,10 +161,9 @@ class TokenClassifier(object):
         train_labels, train_predictions, train_words = [],[],[]
         test_labels, test_predictions, test_words = [],[],[]
         num_totally_correct = 0
-        for i, (sent, labels, preds) in enumerate(zip(self.test_sentences, self.y_test, raw_preds_test)):
+        for i, (labels, preds) in enumerate(zip(self.y_test, raw_preds_test)):
             all_correct = True
-            for word, label, pred in zip(sent, labels, preds):
-                test_words.append(word)
+            for label, pred in zip(labels, preds):
                 test_labels.append(self.token_classes[np.argmax(label)])
                 test_predictions.append(self.token_classes[np.argmax(pred)])
                 if self.token_classes[np.argmax(pred)] != self.token_classes[np.argmax(label)]:
