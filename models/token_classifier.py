@@ -13,9 +13,9 @@ from keras.models import Model, load_model
 
 
 class TokenClassifier(object):
-  def __init__(self, seq_maxlen=100, vocab="vocab.txt", 
-                      options="elmo_options.json", 
-                      weights="elmo_weights.hdf5", use_cpu=False, fpath='data/ner_annotations_split.json'):
+  def __init__(self, seq_maxlen=100, vocab="bin/vocab.txt", 
+                      options="bin/elmo_options.json", 
+                      weights="bin/elmo_weights.hdf5", use_cpu=False, fpath='data/ner_annotations_split.json'):
     self.token_classes = {
       0: "null",
       1: "precursor",
