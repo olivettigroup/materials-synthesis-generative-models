@@ -160,23 +160,15 @@ class TokenClassifier(object):
         raw_preds_test = self.model.predict(self.X_test)
         train_labels, train_predictions, train_words = [],[],[]
         test_labels, test_predictions, test_words = [],[],[]
-        num_totally_correct = 0
         for i, (labels, preds) in enumerate(zip(self.y_test, raw_preds_test)):
-            all_correct = True
             for label, pred in zip(labels, preds):
                 test_labels.append(self.token_classes[np.argmax(label)])
                 test_predictions.append(self.token_classes[np.argmax(pred)])
-                if self.token_classes[np.argmax(pred)] != self.token_classes[np.argmax(label)]:
-                    all_correct = False
-            if all_correct:
-                num_totally_correct+=1
         print('Test Set Results.....')
         print(classification_report(test_labels, test_predictions))
         if confusion_matrix_test:
             print('---')
             print(confusion_matrix(test_labels, test_predictions))
-        print('---')
-        print('Completely Correct Sentences =', num_totally_correct, len(self.test_sentences), round(num_totally_correct/len(self.test_sentences),2))
             
         return self.model.predict(self.X_test)
 
