@@ -30,7 +30,7 @@ class TokenClassifier(object):
 
     self.inv_token_classes = {v: k for k, v in self.token_classes.items()}
     self._seq_maxlen = seq_maxlen
-
+    self.use_cpu = use_cpu
     self._load_tf_session(use_cpu=use_cpu)
     self._load_embeddings(vocab, options, weights)
 
@@ -54,8 +54,8 @@ class TokenClassifier(object):
     )
 
   def train(self, batch_size=256, num_epochs=30, checkpt_filepath=None, 
-            checkpt_period=5, verbosity=1, val_split=0.0):
-    self._load_tf_session(use_cpu=False)
+            checkpt_period=5, verbosity=1, val_split=0.0, stop_early=False):
+    self._load_tf_session(use_cpu=self.use_cpu)
     callbacks = [
       ModelCheckpoint(
         checkpt_filepath,
@@ -65,6 +65,10 @@ class TokenClassifier(object):
         period=checkpt_period
         )
     ]
+    if stop_early:
+      callbacks.append(
+        EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
+      )
 
     self.model.fit(
       x=self.X_train,
