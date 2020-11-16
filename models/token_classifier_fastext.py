@@ -1,5 +1,18 @@
 import json
-
+import spacy
+from spacy.tokens import Doc
+import re
+from keras.models import Model, load_model
+from keras.preprocessing import sequence
+from keras.layers import Dense, Dropout, Embedding, GRU, TimeDistributed, Bidirectional, Input
+from keras.optimizers import Adam
+from keras.callbacks import EarlyStopping, ModelCheckpoint, Callback
+from keras import backend as K
+from sklearn.metrics import classification_report, confusion_matrix
+from gensim.models import keyedvectors
+from unidecode import unidecode_expect_nonascii
+import numpy as np
+import pandas as pd
 
 class TokenClassifier(object):
     def __init__(self, nlp=None, seq_maxlen=100, data='data/ner_annotations_split.json'):
