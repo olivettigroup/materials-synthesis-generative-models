@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 class TokenClassifier(object):
-    def __init__(self, nlp=None, seq_maxlen=100, data='data/ner_annotations_split.json'):
+    def __init__(self, nlp=None, seq_maxlen=100, fpath='data/ner_annotations_split.json'):
         if nlp is None:
             self.nlp = spacy.load('en_core_web_sm')
         else:
