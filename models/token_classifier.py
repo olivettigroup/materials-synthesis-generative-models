@@ -42,38 +42,38 @@ class TokenClassifier(object):
         test_sentences.extend(paper['tokens'][1:])
         test_labels.extend(paper['labels'][1:])
     print('Initializing ELMO Token Model.....')
-    train_elmo_features = token_classifier.featurize_elmo_list(train_sentences)
+    train_elmo_features = self.featurize_elmo_list(train_sentences)
     print('Train Input shape:', train_elmo_features.shape)
-    dev_elmo_features = token_classifier.featurize_elmo_list(dev_sentences)
+    dev_elmo_features = self.featurize_elmo_list(dev_sentences)
     print('Dev Input shape:', dev_elmo_features.shape)
-    test_elmo_features = token_classifier.featurize_elmo_list(test_sentences)
+    test_elmo_features = self.featurize_elmo_list(test_sentences)
     print('Test Input shape:', test_elmo_features.shape)
     y_train, y_dev, y_test = [],[],[]
     for labels in train_labels:
-      train_onehot_labels = np.zeros(shape=(token_classifier._seq_maxlen, len(token_classifier.token_classes)))
-      for j, label in enumerate(labels[:token_classifier._seq_maxlen]):
+      train_onehot_labels = np.zeros(shape=(self._seq_maxlen, len(self.token_classes)))
+      for j, label in enumerate(labels[:self._seq_maxlen]):
         if label not in ['precursor', 'target', 'operation']:
           label = 'null'
-        train_onehot_label = [0.0]*len(token_classifier.token_classes)
-        train_onehot_label[token_classifier.inv_token_classes[label]] = 1.0
+        train_onehot_label = [0.0]*len(self.token_classes)
+        train_onehot_label[self.inv_token_classes[label]] = 1.0
         train_onehot_labels[j] = train_onehot_label
       y_train.append(train_onehot_labels)
     for labels in dev_labels:
-      dev_onehot_labels = np.zeros(shape=(token_classifier._seq_maxlen, len(token_classifier.token_classes)))
-      for j, label in enumerate(labels[:token_classifier._seq_maxlen]):
+      dev_onehot_labels = np.zeros(shape=(self._seq_maxlen, len(self.token_classes)))
+      for j, label in enumerate(labels[:self._seq_maxlen]):
         if label not in ['precursor', 'target', 'operation']:
             label = 'null'
-        dev_onehot_label = [0.0]*len(token_classifier.token_classes)
-        dev_onehot_label[token_classifier.inv_token_classes[label]] = 1.0
+        dev_onehot_label = [0.0]*len(self.token_classes)
+        dev_onehot_label[self.inv_token_classes[label]] = 1.0
         dev_onehot_labels[j] = dev_onehot_label
       y_dev.append(dev_onehot_labels)
     for labels in test_labels:
-      test_onehot_labels = np.zeros(shape=(token_classifier._seq_maxlen, len(token_classifier.token_classes))) 
-      for j, label in enumerate(labels[:token_classifier._seq_maxlen]):
+      test_onehot_labels = np.zeros(shape=(self._seq_maxlen, len(self.token_classes))) 
+      for j, label in enumerate(labels[:self._seq_maxlen]):
         if label not in ['precursor', 'target', 'operation']:
             label = 'null'
-        test_onehot_label = [0.0]*len(token_classifier.token_classes)
-        test_onehot_label[token_classifier.inv_token_classes[label]] = 1.0
+        test_onehot_label = [0.0]*len(self.token_classes)
+        test_onehot_label[self.inv_token_classes[label]] = 1.0
         test_onehot_labels[j] = test_onehot_label
       y_test.append(test_onehot_labels)
     y_test = np.array(y_test)
