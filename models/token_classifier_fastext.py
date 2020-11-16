@@ -156,7 +156,7 @@ class TokenClassifier(object):
             verbose=verbosity
         )
 
-    def test(self, confusion_matrix=True):
+    def test(self, confusion_matrix_test=True):
         raw_preds_test = self.model.predict(self.X_test)
         train_labels, train_predictions, train_words = [],[],[]
         test_labels, test_predictions, test_words = [],[],[]
@@ -172,7 +172,7 @@ class TokenClassifier(object):
                 num_totally_correct+=1
         print('Test Set Results.....')
         print(classification_report(test_labels, test_predictions))
-        if confusion_matrix:
+        if confusion_matrix_test:
             print('---')
             print(confusion_matrix(test_labels, test_predictions))
         print('---')
