@@ -166,7 +166,7 @@ class TokenClassifier(object):
                 test_labels.append(self.token_classes[np.argmax(label)])
                 test_predictions.append(self.token_classes[np.argmax(pred)])
                 if self.token_classes[np.argmax(pred)] != self.token_classes[np.argmax(label)]:
-                all_correct = False
+                    all_correct = False
             if all_correct:
                 num_totally_correct+=1
         print('Test Set Results.....')
