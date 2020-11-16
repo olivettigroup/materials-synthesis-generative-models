@@ -10,6 +10,7 @@ from keras.callbacks import Callback, EarlyStopping, ModelCheckpoint
 from keras.layers import (GRU, Bidirectional, Dense, Dropout, Input,
                           TimeDistributed)
 from keras.models import Model, load_model
+from sklearn.metrics import classification_report, confusion_matrix
 
 
 class TokenClassifier(object):
@@ -128,6 +129,22 @@ class TokenClassifier(object):
       callbacks= callbacks,
       verbose=verbosity,
     )
+  
+  def test(self, confusion_matrix_test=True):
+        raw_preds_test = self.model.predict(self.X_test)
+        train_labels, train_predictions, train_words = [],[],[]
+        test_labels, test_predictions, test_words = [],[],[]
+        for i, (labels, preds) in enumerate(zip(self.Y_test, raw_preds_test)):
+            for label, pred in zip(labels, preds):
+                test_labels.append(self.token_classes[np.argmax(label)])
+                test_predictions.append(self.token_classes[np.argmax(pred)])
+        print('Test Set Results.....')
+        print(classification_report(test_labels, test_predictions))
+        if confusion_matrix_test:
+            print('---')
+            print(confusion_matrix(test_labels, test_predictions))
+            
+        return self.model.predict(self.X_test)
 
 
   def featurize_elmo_list(self, sent_toks_list, batch_size=128):
