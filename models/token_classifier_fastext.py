@@ -51,10 +51,10 @@ class TokenClassifier(object):
                     onehot_label = [0.0]*len(self.token_classes)
                     onehot_label[self.inv_token_classes[label]] = 1.0
                     onehot_labels[j] = onehot_label
-                if ann_paper["split"] = "train":
+                if ann_paper["split"] == "train":
                     self.X_train.append(ft_vec)
                     self.y_train.append(onehot_labels)
-                elif ann_paper["split"] = "dev":
+                elif ann_paper["split"] == "dev":
                     self.X_dev.append(ft_vec)
                     self.y_dev.append(onehot_labels)
                 else:
