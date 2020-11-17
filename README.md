@@ -27,6 +27,8 @@ Links to the trained models/weights are as follows:
 - FastText: https://figshare.com/s/70455cfcd0084a504745
 - ELMo: https://figshare.com/s/ec677e7db3cf2b7db4bf
 - ParagraphClassifier: https://figshare.com/s/1a07d18ad20008ddd562
+- TokenClassifierFastText:  https://figshare.com/articles/software/Pre-trained_synthesis_NER_fasttext_model/13244369
+- TokenClassifierELMO: https://figshare.com/articles/software/Pre-trained_synthesis_NER_ELMO_model/13244387
 
 ## Neural Network Models/Data 🧠
 
