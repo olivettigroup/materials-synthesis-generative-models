@@ -91,27 +91,6 @@ class TokenClassifier(object):
       self.Y_train = y_train
       self.Y_dev = y_dev
       self.Y_test = y_test
-      for x in self.X_train:
-        for y in x:
-          for z in y:
-            if z is None:
-              print('Found X Train')
-      for x in self.X_dev:
-        for y in x:
-          for z in y:
-            if z is None:
-              print('Found X Dev')
-      for x in self.Y_train:
-        for y in x:
-          for z in y:
-            if z is None:
-              print('Found Y Train')
-      for x in self.Y_dev:
-        for y in x:
-          for z in y:
-            if z is None:
-              print('Found Y Dev')
-      print('Finished.....')
 
     else:
       self.X_train = None
@@ -132,7 +111,7 @@ class TokenClassifier(object):
 
     model = Model(inputs=[input_vectors], outputs=[dense_out])
     model.compile(loss='categorical_crossentropy',
-                  optimizer=optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=True),
+                  optimizer=optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=0.001, decay=0.0, amsgrad=True),
                   metrics=['accuracy'])
     self.model = model
     self.fast_predict = K.function(
@@ -148,15 +127,6 @@ class TokenClassifier(object):
       callbacks.append(
         EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
       )
-    print(self.X_train is None)
-    print(self.Y_train is None)
-    print(batch_size is None)
-    print(num_epochs is None)
-    print(val_split is None)
-    print(self.X_dev is None)
-    print(self.Y_dev is None)
-    print(callbacks is None)
-    print(verbosity is None)
     self.model.fit(
       x=self.X_train,
       y=self.Y_train,
