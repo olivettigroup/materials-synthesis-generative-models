@@ -111,6 +111,7 @@ class TokenClassifier(object):
           for z in y:
             if z is None:
               print('Found Y Dev')
+      print('Finished......')
 
     else:
       self.X_train = None
