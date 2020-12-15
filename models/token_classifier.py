@@ -127,7 +127,15 @@ class TokenClassifier(object):
       callbacks.append(
         EarlyStopping(monitor='val_loss', min_delta=0, patience=4, verbose=0, mode='auto')
       )
-
+    print(self.X_train is None)
+    print(self.Y_train is None)
+    print(batch_size is None)
+    print(num_epochs is None)
+    print(val_split is None)
+    print(self.X_dev is None)
+    print(self.Y_dev is None)
+    print(callbacks is None)
+    print(verbosity is None)
     self.model.fit(
       x=self.X_train,
       y=self.Y_train,
