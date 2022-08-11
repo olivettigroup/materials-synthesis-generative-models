@@ -2,7 +2,9 @@ import json
 
 import numpy as np
 
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf # need to import like this for colab compatibility
+tf.disable_v2_behavior()
 from bilm import Batcher, BidirectionalLanguageModel, weight_layers
 from keras import backend as K
 from keras import optimizers
